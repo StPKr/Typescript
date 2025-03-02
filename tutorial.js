@@ -51,27 +51,43 @@
 //     console.log("Contract signed by " + employee.name + "with email: " + employee.email);
 // }
 // signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });
-//*Enums
+// //*Enums
 //unauthorized, user doesn't exist, wrong credentials, internal
-var LoginError;
-(function (LoginError) {
-    LoginError["Unathorized"] = "unauthorized";
-    LoginError["NoUser"] = "nouser";
-    LoginError["WrongCredentials"] = "wrongcredentials";
-    LoginError["Internal"] = "internal";
-})(LoginError || (LoginError = {}));
-const printErrorMsg = (error) => {
-    if (error = LoginError.Unathorized) {
-        console.log("User not authorized");
+// enum LoginError {
+//     Unathorized = "unauthorized",
+//     NoUser = "nouser",
+//     WrongCredentials = "wrongcredentials",
+//     Internal = "internal",
+// }
+// const printErrorMsg = (error: LoginError) => {
+//     if (error = LoginError.Unathorized) {
+//         console.log("User not authorized");
+//     } else if (error = LoginError.NoUser) {
+//         console.log("No user was found with this username");
+//     } else if (error = LoginError.WrongCredentials) {
+//         console.log("Wrong credentials were used");
+//     } else if (error = LoginError.NoUser) {
+//         console.log("Internal error");
+//     }
+// }
+// printErrorMsg(LoginError.Internal);
+//*Generics - creates a reusable class which can have specific datatype defined on each separate instance creation
+class StorageContainer {
+    constructor() {
+        this.contents = [];
     }
-    else if (error = LoginError.NoUser) {
-        console.log("No user was found with this username");
+    addItem(item) {
+        this.contents.push(item);
     }
-    else if (error = LoginError.WrongCredentials) {
-        console.log("Wrong credentials were used");
+    getItem(idx) {
+        return this.contents[idx];
     }
-    else if (error = LoginError.NoUser) {
-        console.log("Internal error");
-    }
-};
-printErrorMsg(LoginError.Internal);
+}
+const usernames = new StorageContainer();
+usernames.addItem("somethingtech");
+usernames.addItem("anothertingitem");
+console.log(usernames.getItem(1));
+const friendsCount = new StorageContainer();
+friendsCount.addItem(23);
+friendsCount.addItem(21231);
+console.log(friendsCount.getItem(0));

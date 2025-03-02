@@ -68,26 +68,52 @@
 
 // signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });
 
-//*Enums
+// //*Enums
 //unauthorized, user doesn't exist, wrong credentials, internal
-enum LoginError {
-    Unathorized = "unauthorized",
-    NoUser = "nouser",
-    WrongCredentials = "wrongcredentials",
-    Internal = "internal",
-}
+// enum LoginError {
+//     Unathorized = "unauthorized",
+//     NoUser = "nouser",
+//     WrongCredentials = "wrongcredentials",
+//     Internal = "internal",
+// }
 
-const printErrorMsg = (error: LoginError) => {
-    if (error = LoginError.Unathorized) {
-        console.log("User not authorized");
-    } else if (error = LoginError.NoUser) {
-        console.log("No user was found with this username");
-    } else if (error = LoginError.WrongCredentials) {
-        console.log("Wrong credentials were used");
-    } else if (error = LoginError.NoUser) {
-        console.log("Internal error");
+// const printErrorMsg = (error: LoginError) => {
+//     if (error = LoginError.Unathorized) {
+//         console.log("User not authorized");
+//     } else if (error = LoginError.NoUser) {
+//         console.log("No user was found with this username");
+//     } else if (error = LoginError.WrongCredentials) {
+//         console.log("Wrong credentials were used");
+//     } else if (error = LoginError.NoUser) {
+//         console.log("Internal error");
+//     }
+// }
+
+// printErrorMsg(LoginError.Internal);
+
+//*Generics - creates a reusable class which can have specific datatype defined on each separate instance creation
+class StorageContainer<T> {
+    private contents: T[]
+
+    constructor() {
+        this.contents = [];
+    }
+
+    addItem(item: T): void {
+        this.contents.push(item);
+    }
+
+    getItem(idx: number): T | undefined {
+        return this.contents[idx];
     }
 }
 
-printErrorMsg(LoginError.Internal);
+const usernames = new StorageContainer<string>();
+usernames.addItem("somethingtech");
+usernames.addItem("anothertingitem");
+console.log(usernames.getItem(1));
 
+const friendsCount = new StorageContainer<number>();
+friendsCount.addItem(23);
+friendsCount.addItem(21231);
+console.log(friendsCount.getItem(0));

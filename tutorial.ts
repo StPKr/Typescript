@@ -118,23 +118,23 @@
 // friendsCount.addItem(21231);
 // console.log(friendsCount.getItem(0));
 
-//*Read only variables
-interface Employee {
-    readonly employeeId: number;
-    readonly startDate: Date;
+// //*Read only variables
+// interface Employee {
+//     readonly employeeId: number;
+//     readonly startDate: Date;
 
-    name: string;
-    department: string;
-}
+//     name: string;
+//     department: string;
+// }
 
-const employee: Employee = {
-    employeeId: 123,
-    startDate: new Date(),
-    name: "Pedro",
-    department: "Finance",
-}
+// const employee: Employee = {
+//     employeeId: 123,
+//     startDate: new Date(),
+//     name: "Pedro",
+//     department: "Finance",
+// }
 
-employee.name = "Jessica";
-employee.employeeId = 234;
+// employee.name = "Jessica";
+// employee.employeeId = 234;
 
-console.log(employee);
+// console.log(employee);

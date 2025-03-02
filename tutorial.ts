@@ -15,28 +15,56 @@
 // console.log(concatenateValues("Hello", "Wordl"));
 // console.log(concatenateValues(5, 10));
 
-//*Interfaces and types
-interface UserInterface { //*usually done for objects
-    id: number;
-    name: string;
-    age?: number;
-    greet(mesage: string): void; //*define the function as type and what type to return, void since we're not returning anything
-};
+// //*Interfaces and types
+// interface UserInterface { //*usually done for objects
+//     id: number;
+//     name: string;
+//     age?: number;
+//     greet(mesage: string): void; //*define the function as type and what type to return, void since we're not returning anything
+// };
 
-const User: UserInterface = {
-    id: 2,
-    name: "Pedro",
-    greet(message) {
-        console.log(message);
-    }
-};
+// const User: UserInterface = {
+//     id: 2,
+//     name: "Pedro",
+//     greet(message) {
+//         console.log(message);
+//     }
+// };
 
-User.greet("Hello");
+// User.greet("Hello");
 
-if (!User.age) {
-    console.log("No age of the user!");
-} else {
-    console.log(User.age);
+// if (!User.age) {
+//     console.log("No age of the user!");
+// } else {
+//     console.log(User.age);
+// }
+
+//*Intersections and unions
+type IDFieldType = string | number; //*usually done for objects
+
+const printId = (id: IDFieldType): void => {
+    console.log(id);
 }
 
+printId("daig0329-0gasd");
+printId(129129124012);
+
+
+interface BusinesSPartner {
+    name: string;
+    creditScore: number;
+}
+
+interface UserIdentity {
+    id: number;
+    email: string;
+}
+
+type Employee = BusinesSPartner & UserIdentity; //* with | operator it's OR with & it's AND, this way it has both attributes
+
+const signContract = (employee: Employee): void => {
+    console.log("Contract signed by " + employee.name + "with email: " + employee.email);
+}
+
+signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });
 

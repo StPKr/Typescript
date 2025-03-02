@@ -3,18 +3,12 @@
 // let id: number = 5;
 // let company: string = "Random name";
 // let isPublished: boolean = true;
-;
-const User = {
-    id: 2,
-    name: "Pedro",
-    greet(message) {
-        console.log(message);
-    }
+const printId = (id) => {
+    console.log(id);
 };
-User.greet("Hello");
-if (!User.age) {
-    console.log("No age of the user!");
-}
-else {
-    console.log(User.age);
-}
+printId("daig0329-0gasd");
+printId(129129124012);
+const signContract = (employee) => {
+    console.log("Contract signed by " + employee.name + "with email: " + employee.email);
+};
+signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });

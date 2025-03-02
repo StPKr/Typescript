@@ -91,29 +91,50 @@
 
 // printErrorMsg(LoginError.Internal);
 
-//*Generics - creates a reusable class which can have specific datatype defined on each separate instance creation
-class StorageContainer<T> {
-    private contents: T[]
+// //*Generics - creates a reusable class which can have specific datatype defined on each separate instance creation
+// class StorageContainer<T> {
+//     private contents: T[]
 
-    constructor() {
-        this.contents = [];
-    }
+//     constructor() {
+//         this.contents = [];
+//     }
 
-    addItem(item: T): void {
-        this.contents.push(item);
-    }
+//     addItem(item: T): void {
+//         this.contents.push(item);
+//     }
 
-    getItem(idx: number): T | undefined {
-        return this.contents[idx];
-    }
+//     getItem(idx: number): T | undefined {
+//         return this.contents[idx];
+//     }
+// }
+
+// const usernames = new StorageContainer<string>();
+// usernames.addItem("somethingtech");
+// usernames.addItem("anothertingitem");
+// console.log(usernames.getItem(1));
+
+// const friendsCount = new StorageContainer<number>();
+// friendsCount.addItem(23);
+// friendsCount.addItem(21231);
+// console.log(friendsCount.getItem(0));
+
+//*Read only variables
+interface Employee {
+    readonly employeeId: number;
+    readonly startDate: Date;
+
+    name: string;
+    department: string;
 }
 
-const usernames = new StorageContainer<string>();
-usernames.addItem("somethingtech");
-usernames.addItem("anothertingitem");
-console.log(usernames.getItem(1));
+const employee: Employee = {
+    employeeId: 123,
+    startDate: new Date(),
+    name: "Pedro",
+    department: "Finance",
+}
 
-const friendsCount = new StorageContainer<number>();
-friendsCount.addItem(23);
-friendsCount.addItem(21231);
-console.log(friendsCount.getItem(0));
+employee.name = "Jessica";
+employee.employeeId = 234;
+
+console.log(employee);

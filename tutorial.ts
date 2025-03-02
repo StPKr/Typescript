@@ -39,32 +39,55 @@
 //     console.log(User.age);
 // }
 
-//*Intersections and unions
-type IDFieldType = string | number; //*usually done for objects
+// //*Intersections and unions
+// type IDFieldType = string | number; //*usually done for objects
 
-const printId = (id: IDFieldType): void => {
-    console.log(id);
+// const printId = (id: IDFieldType): void => {
+//     console.log(id);
+// }
+
+// printId("daig0329-0gasd");
+// printId(129129124012);
+
+
+// interface BusinesSPartner {
+//     name: string;
+//     creditScore: number;
+// }
+
+// interface UserIdentity {
+//     id: number;
+//     email: string;
+// }
+
+// type Employee = BusinesSPartner & UserIdentity; //* with | operator it's OR with & it's AND, this way it has both attributes
+
+// const signContract = (employee: Employee): void => {
+//     console.log("Contract signed by " + employee.name + "with email: " + employee.email);
+// }
+
+// signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });
+
+//*Enums
+//unauthorized, user doesn't exist, wrong credentials, internal
+enum LoginError {
+    Unathorized = "unauthorized",
+    NoUser = "nouser",
+    WrongCredentials = "wrongcredentials",
+    Internal = "internal",
 }
 
-printId("daig0329-0gasd");
-printId(129129124012);
-
-
-interface BusinesSPartner {
-    name: string;
-    creditScore: number;
+const printErrorMsg = (error: LoginError) => {
+    if (error = LoginError.Unathorized) {
+        console.log("User not authorized");
+    } else if (error = LoginError.NoUser) {
+        console.log("No user was found with this username");
+    } else if (error = LoginError.WrongCredentials) {
+        console.log("Wrong credentials were used");
+    } else if (error = LoginError.NoUser) {
+        console.log("Internal error");
+    }
 }
 
-interface UserIdentity {
-    id: number;
-    email: string;
-}
-
-type Employee = BusinesSPartner & UserIdentity; //* with | operator it's OR with & it's AND, this way it has both attributes
-
-const signContract = (employee: Employee): void => {
-    console.log("Contract signed by " + employee.name + "with email: " + employee.email);
-}
-
-signContract({ name: "Pedro", id: 12192914, creditScore: 800, email: "pedro.nial@gmail.com" });
+printErrorMsg(LoginError.Internal);
 
